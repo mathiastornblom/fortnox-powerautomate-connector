@@ -32,6 +32,25 @@
         main p {
             text-align: justify;
         }
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .cta-button {
+            background-color: #3f51b5;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .cta-button:hover {
+            background-color: #283593;
+        }
         footer {
             background-color: #3f51b5;
             color: white;
@@ -55,11 +74,16 @@
         <p>Create powerful automations for finance and business administration with the Fortnox API & Custom Connector for Power Automate. Easily manage invoices, inventory, customers, and suppliers directly in Microsoft Power Automate.</p>
         <p>Smoothly connect Fortnox API to your flows using the developed Custom Connector, creating automated processes tailored to your needs. Save time and reduce the risk of manual errors, providing your business with a competitive advantage.</p>
         <p>Features include invoicing, customer management, and can be expanded upon request. Additionally, easily connect Fortnox API with other Power Automate services to further optimize your workflows.</p>
+        <div class="cta-buttons">
+            <a href="mailto:mathias@tornblom.net" class="cta-button">Send Email</a>
+            <a href="https://github.com/mathiastornblom/fortnox-powerautomate-connector/raw/main/FortnoxAPI.swagger.json" download class="cta-button">Download JSON</a>
+        </div>
     </main>
     <footer>
         <p>Contact Information:</p>
         <p>Mathias Törnblom</p>
-        <p>Email: <a href="mailto:mathias@tornblom.net">mathias@tornblom.net</a></p>
+        <p>Email: <a href="mailto:mathias@tornblom.net">mathias@tornblom.net</a></
+<p></p>
         <p>Phone: +46 709 49 90 10</p>
     </footer>
 </body>
