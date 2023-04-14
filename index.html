@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Automate Your Business with Fortnox API & Custom Connector for Power Automate</title>
+  <title>Automatisera Ditt Företag Med Fortnox API & Anpassad Kopplingspunkt för Power Automate</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -110,79 +110,131 @@
     footer a:hover {
       text-decoration: underline;
     }
-  </style>
-</head>
 
+    /* Styles for the three step section */
+    .three-steps {
+      background-color: #deffde;
+      padding: 2rem;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .step {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 1rem;
+    }
+
+    .step-icon {
+      width: 4rem;
+      height: 4rem;
+      background-size: cover;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-bottom: 1rem;
+}
+
+.step-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.step-description {
+  text-align: center;
+}
+</style>
+</head>
 <body>
   <header>
-    <h1>Automate Your Business with Fortnox API & Custom Connector for Power Automate</h1>
+    <h1>Automatisera Ditt Företag Med Fortnox API & Anpassad Kopplingspunkt för Power Automate</h1>
   </header>
   <main>
-    <p>Create powerful automations for finance and business administration with the Fortnox API & Custom Connector for Power Automate. Easily manage invoices, inventory, customers, and suppliers directly in Microsoft Power Automate.</p>
-    <p>Smoothly connect Fortnox API to your flows using the developed Custom Connector, creating automated processes tailored to your needs. Save time and reduce the risk of manual errors, providing your business with a competitive advantage.</p>
-<div class="cta-buttons">
-<a href="https://www.fortnox.se?utm_source=integrator&utm_medium=link&utm_campaign=fortnox-hos-integrator" class="cta-button">Learn More</a>
+    <p>Anslut smidigt Fortnox API till dina flöden med den utvecklade anpassade kopplingspunkten och skapa automatiserade processer anpassade efter dina behov. Spara tid och minska risken för manuella fel och ge ditt företag en konkurrensfördel.</p>
+    <p>Funktioner inkluderar fakturering, kundhantering och kan utökas vid behov. Dessutom kan du enkelt ansluta Fortnox API till andra Power Automate-tjänster för att ytterligare optimera dina arbetsflöden.</p>
+    <div class="cta-buttons">
+      <a href="https://www.fortnox.se?utm_source=integrator&utm_medium=link&utm_campaign=fortnox-hos-integrator" class="cta-button">Läs Mer</a>
+    </div>
+    <h2 style="background-color: #deffde; color: #007533; padding: 0.5rem;">Exempelflöden</h2>
+    <ul>
+      <li>Automatiskt skapa fakturor i Fortnox när en ny order tas emot i Shopify</li>
+      <li>Skicka meddelanden till kunder när deras order har skickats, med hjälp av Fortnox-data</li>
+      <li>Uppdatera lagerstatus i Fortnox när nytt lager anländer till lagret</li>
+      <li>Integrera kunddata från Fortnox med en CRM-tjänst som Salesforce eller HubSpot</li>
+    </ul>
+    <div class="three-steps" style="background-color: #fff;">
+      <div class="step" style="background-color: #deffde;">
+        <div class="step-icon" style="background-image: url('ikon-1.png');"></div>
+        <div class="step-title">Steg 1</div>
+        <div class="step-description">Registrera dig för Fortnox och skaffa en API-nyckel</div>
+      </div>
+      <div class="step" style="background-color: #f4f4f4;">
+        <div class="step-icon" style="background-image: url('ikon-2.png');"></div>
+        <div class="step-title">Steg 2</div>
+        <div class="step-description">Skapa en anpassad kopplingspunkt för Power Automate med API-nyckeln</div>
+      </div>
+      <div class="step" style="background-color: #deffde;">
+        <div class="step-icon" style="background-image: url('ikon-3.png');"></div>
+        <div class="step-title">Steg 3</div>
+        <div class="step-description">Lägg till kopplingspunkten i dinaPower Automate-flöden och automatisera dina processer</div>
 </div>
-<h2 style="background-color: #deffde; color: #007533; padding: 0.5rem;">Example Flows</h2>
-<ul>
-<li>Automatically create invoices in Fortnox when a new order is received in Shopify</li>
-<li>Send notifications to customers when their orders have shipped, using Fortnox data</li>
-<li>Update inventory levels in Fortnox when new stock arrives at the warehouse</li>
-<li>Integrate customer data from Fortnox with a CRM tool like Salesforce or HubSpot</li>
-</ul>
-<h2 style="background-color: #deffde; color: #007533; padding: 0.5rem;">Contact Me</h2>
-<form id="contact-form" method="post" action="contact-form-handler.php">
+</div>
+<h2 style="background-color: #f4f4f4; color: #007533; padding: 0.5rem;">Kontakta Mig</h2>
+<form id="contact-form">
 <div class="form-group">
-<label for="name">Name:</label>
+<label for="name">Namn:</label>
 <input type="text" id="name" name="name" required>
 </div>
 <div class="form-group">
-<label for="email">Email:</label>
+<label for="email">E-postadress:</label>
 <input type="email" id="email" name="email" required>
 </div>
 <div class="form-group">
-<label for="message">Message:</label>
+<label for="message">Meddelande:</label>
 <textarea id="message" name="message" required></textarea>
 </div>
-<button type="submit">Send Message</button>
+<button type="submit">Skicka</button>
 </form>
 
   </main>
   <footer>
-    <p>Contact Information:</p>
+    <p>Kontaktinformation:</p>
     <p>Mathias Törnblom</p>
-    <p>Email: <a href="mailto:mathias@tornblom.net">mathias@tornblom.net</a></p>
-    <p>Phone: +46 709 49 90 10</p>
+    <p>Email: <a href="mailto:mathias@tornbloms.net">mathias@tornbloms.net</a></p>
+    <p>Telefon: +46 709 49 90 10</p>
   </footer>
   <script>
     const form = document.getElementById("contact-form");
     const name = document.getElementById("name");
     const email = document.getElementById("email");
-    const message = document.getElementById("message");form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const formData = {
-    name: name.value,
-    email: email.value,
-    message: message.value,
-  };
+    const message = document.getElementById("message");form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  formData.append("name", name.value);
+  formData.append("email", email.value);
+  formData.append("message", message.value);
 
-  fetch("contact-form-handler.php", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(formData),
-  })
+  fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      body: new URLSearchParams(formData).toString(),
+    })
     .then((response) => {
-      if (response.ok) {
-        alert("Message sent. Thank you for contacting me!");
-        form.reset();
-      } else {
-        throw new Error("Message not sent");
-      }
+      alert("Meddelandet har skickats!");
+      name.value = "";
+      email.value = "";
+      message.value = "";
     })
     .catch((error) => {
-      alert("There was an error sending your message. Please try again later.");
+      alert("Något gick fel. Försök igen senare.");
+      console.error(error);
     });
 });
-  </script>
+</script>
 </body>
 </html>
