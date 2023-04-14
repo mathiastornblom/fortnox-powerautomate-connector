@@ -15,8 +15,8 @@
     }
 
     header {
-      background-color: #deffde;
-      color: #007533;
+      background-color: #007533;
+      color: white;
       padding: 1.5rem 0;
     }
 
@@ -26,58 +26,72 @@
     }
 
     main {
-      background-color: white;
-      padding: 2rem;
       max-width: 800px;
       margin: 2rem auto;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
       border-radius: 4px;
+      background-color: white;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-gap: 2rem;
     }
 
-    main p {
+    h2 {
+      margin-top: 0;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      text-align: center;
+      background-color: #deffde;
+      color: #007533;
+      border-radius: 4px;
+    }
+
+    p {
       text-align: justify;
     }
 
-    .cta-button {
-      background-color: #007533;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      font-size: 1rem;
-      border-radius: 4px;
-      cursor: pointer;
+    .three-steps {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
     }
 
-    .cta-button:hover {
-      background-color: #005822;
+    .step {
+      text-align: center;
+    }
+
+    .step-icon {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+      margin-bottom: 1rem;
+      background-color: #deffde;
+    }
+
+    .step-title {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
     }
 
     .form-group {
       margin-bottom: 1rem;
     }
 
-    label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 0.5rem;
-    }
-
+    label,
     input[type="text"],
     input[type="email"],
     textarea {
-      display: block;
       width: 100%;
       padding: 0.5rem;
-      font-size: 1rem;
-      border-radius: 4px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
-      margin-bottom: 1rem;
-    }
-
-    textarea {
-      height: 10rem;
+      border-radius: 4px;
+      font-size: 1rem;
     }
 
     button[type="submit"] {
@@ -89,10 +103,11 @@
       font-size: 1rem;
       border-radius: 4px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
 
     button[type="submit"]:hover {
-      background-color: #005822;
+      background-color: #005a1e;
     }
 
     footer {
@@ -100,51 +115,26 @@
       color: white;
       padding: 1rem 0;
       text-align: center;
-    }
-
-    footer a {
-      color: white;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    /* Styles for the three step section */
-    .three-steps {
-      background-color: #deffde;
-      padding: 2rem;
       margin-top: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    .step {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      margin: 1rem;
-    }
-
-    .step-icon {
-      width: 4rem;
-      height: 4rem;
-      background-size: cover;
-  border-radius: 50%;
-  background-repeat: no-repeat;
-  background-position: center center;
-  margin-bottom: 1rem;
+}
+   
+  footer a {
+  color: white;
+  text-decoration: none;
 }
 
-.step-title {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
+footer a:hover {
+  text-decoration: underline;
 }
 
-.step-description {
-  text-align: center;
+@media only screen and (max-width: 768px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+
+  .three-steps {
+    flex-direction: column;
+  }
 }
 </style>
 </head>
@@ -153,88 +143,56 @@
     <h1>Automatisera Ditt Företag Med Fortnox API & Anpassad Kopplingspunkt för Power Automate</h1>
   </header>
   <main>
-    <p>Anslut smidigt Fortnox API till dina flöden med den utvecklade anpassade kopplingspunkten och skapa automatiserade processer anpassade efter dina behov. Spara tid och minska risken för manuella fel och ge ditt företag en konkurrensfördel.</p>
-    <p>Funktioner inkluderar fakturering, kundhantering och kan utökas vid behov. Dessutom kan du enkelt ansluta Fortnox API till andra Power Automate-tjänster för att ytterligare optimera dina arbetsflöden.</p>
-    <div class="cta-buttons">
-      <a href="https://www.fortnox.se?utm_source=integrator&utm_medium=link&utm_campaign=fortnox-hos-integrator" class="cta-button">Läs Mer</a>
+    <div>
+      <p>Skapa kraftfulla automatiseringar för finans och företagsadministration med Fortnox API & Anpassad Kopplingspunkt för Power Automate. Hantera enkelt fakturor, lager, kunder och leverantörer direkt i Microsoft Power Automate.</p>
+      <p>Anslut enkelt Fortnox API till dina flöden med den utvecklade anpassade kopplingspunkten och skapa automatiserade processer som är anpassade efter dina behov. Spara tid och minska risken för manuella fel och ge ditt företag en konkurrensfördel.</p>
+      <p>Funktioner inkluderar fakturering, kundhantering och kan utökas på begäran. Dessutom kan Fortnox API enkelt anslutas till andra Power Automate-tjänster för att ytterligare optimera dina arbetsflöden.</p>
+      <h2>Kom Igång Med Tre Enkla Steg</h2>
+      <div class="three-steps">
+        <div class="step">
+          <div class="step-icon" style="background-image: url('https://github.com/mathiastornblom/fortnox-powerautomate-connector/blob/main/ikon-1.png?raw=true');"></div>
+          <div class="step-title">Skapa En App I Fortnox</div>
+          <div class="step-description">Skapa en app i Fortnox med behörigheter för de API-anrop som du vill använda.</div>
+        </div>
+        <div class="step">
+          <div class="step-icon" style="background-image: url('https://github.com/mathiastornblom/fortnox-powerautomate-connector/blob/main/ikon-2.png?raw=true');"></div>
+          <div class="step-title">Lägg Till En Anpassad Kopplingspunkt I Power Automate</div>
+          <div class="step-description">Lägg till anpassad kopplingspunkt i Power Automate och använd dina Fortnox-API-anrop i dina flöden.</div>
+        </div>
+        <div class="step">
+          <div class="step-icon" style="background-image: url('https://github.com/mathiastornblom/fortnox-powerautomate-connector/blob/main/ikon-3.png?raw=true');"></div>
+          <div class="step-title">Bygg Dina Automatiseringar</div>
+          <div class="step-description">Bygg dina automatiseringar i Power Automate och effektivisera dina företagsprocesser.</div>
+        </div>
+      </div>
     </div>
-    <h2 style="background-color: #deffde; color: #007533; padding: 0.5rem;">Exempelflöden</h2>
-    <ul>
-      <li>Automatiskt skapa fakturor i Fortnox när en ny order tas emot i Shopify</li>
-      <li>Skicka meddelanden till kunder när deras order har skickats, med hjälp av Fortnox-data</li>
-      <li>Uppdatera lagerstatus i Fortnox när nytt lager anländer till lagret</li>
-      <li>Integrera kunddata från Fortnox med en CRM-tjänst som Salesforce eller HubSpot</li>
-    </ul>
-    <div class="three-steps" style="background-color: #fff;">
-      <div class="step" style="background-color: #deffde;">
-        <div class="step-icon" style="background-image: url('ikon-1.png');"></div>
-        <div class="step-title">Steg 1</div>
-        <div class="step-description">Registrera dig för Fortnox och skaffa en API-nyckel</div>
-      </div>
-      <div class="step" style="background-color: #f4f4f4;">
-        <div class="step-icon" style="background-image: url('ikon-2.png');"></div>
-        <div class="step-title">Steg 2</div>
-        <div class="step-description">Skapa en anpassad kopplingspunkt för Power Automate med API-nyckeln</div>
-      </div>
-      <div class="step" style="background-color: #deffde;">
-        <div class="step-icon" style="background-image: url('ikon-3.png');"></div>
-        <div class="step-title">Steg 3</div>
-        <div class="step-description">Lägg till kopplingspunkten i dinaPower Automate-flöden och automatisera dina processer</div>
-</div>
-</div>
-<h2 style="background-color: #f4f4f4; color: #007533; padding: 0.5rem;">Kontakta Mig</h2>
-<form id="contact-form">
+    <div>
+      <h2>Kontakta Mig</h2>
+      <form action="mailto:mathias@tornblom.net" method="post">
 <div class="form-group">
 <label for="name">Namn:</label>
 <input type="text" id="name" name="name" required>
 </div>
 <div class="form-group">
-<label for="email">E-postadress:</label>
+<label for="email">E-post:</label>
 <input type="email" id="email" name="email" required>
 </div>
 <div class="form-group">
 <label for="message">Meddelande:</label>
-<textarea id="message" name="message" required></textarea>
+<textarea id="message" name="message" rows="4" required></textarea>
 </div>
 <button type="submit">Skicka</button>
 </form>
+</div>
 
   </main>
   <footer>
     <p>Kontaktinformation:</p>
     <p>Mathias Törnblom</p>
-    <p>Email: <a href="mailto:mathias@tornbloms.net">mathias@tornbloms.net</a></p>
+    <p>E-post: <a href="mailto:mathias@tornblom.net">mathias@tornblom.net</a></p>
     <p>Telefon: +46 709 49 90 10</p>
+    <p>Om Fortnox</p>
+    <p>Fortnox erbjuder en molnbaserad plattform så att företag och redovisningsfirmor kan hantera sin ekonomi och administration effektivt. Plattformen är marknadsledande i Sverige. Det ger också kunder tillgång till finansiella tjänster och företagsförsäkringar. För mer information se <a href="https://www.fortnox.se">www.fortnox.se</a></p>
   </footer>
-  <script>
-    const form = document.getElementById("contact-form");
-    const name = document.getElementById("name");
-    const email = document.getElementById("email");
-    const message = document.getElementById("message");form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const formData = new FormData();
-  formData.append("name", name.value);
-  formData.append("email", email.value);
-  formData.append("message", message.value);
-
-  fetch("/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams(formData).toString(),
-    })
-    .then((response) => {
-      alert("Meddelandet har skickats!");
-      name.value = "";
-      email.value = "";
-      message.value = "";
-    })
-    .catch((error) => {
-      alert("Något gick fel. Försök igen senare.");
-      console.error(error);
-    });
-});
-</script>
 </body>
 </html>
