@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+          <!DOCTYPE html>
 <html lang="sv">
 
 <head>
@@ -6,93 +6,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Automatisera Ditt Företag Med Fortnox API & Anpassad Kopplingspunkt för Power Automate</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
     body {
       font-family: Arial, sans-serif;
       line-height: 1.6;
       background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
     }
 
     header {
       background-color: #007533;
-      color: #deffde;
+      color: white;
       padding: 1.5rem 0;
       text-align: center;
     }
 
     main {
-      max-width: 100%;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      background-color: white;
-      padding: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      margin-bottom: 2rem;
+      border-radius: 4px;
+      overflow: hidden;
     }
 
-    h1 {
-      margin-bottom: 2rem;
-      font-size: 2.5rem;
+    section {
+      background-color: #f8f8f8;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    h1,
+    h2 {
+      color: #deffde;
       text-align: center;
+      margin-bottom: 2rem;
     }
 
     p {
+      color: #333;
       text-align: justify;
-      margin-bottom: 1rem;
+    }
+
+    a {
+      color: #007533;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
 
     .three-steps {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-top: 2rem;
-      margin-bottom: 2rem;
+      justify-content: space-around;
+      margin: 2rem 0;
     }
 
     .step {
       flex-basis: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       text-align: center;
+      margin: 1rem;
+      background-color: #eaeaea;
+      border-radius: 4px;
+      padding: 2rem;
     }
 
     .step-icon {
-      width: 100px;
-      height: 100px;
-      background-repeat: no-repeat;
-      background-size: contain;
+      width: 75px;
+      height: 75px;
+      background-size: cover;
       margin-bottom: 1rem;
     }
 
     .step-title {
-      font-weight: bold;
-      margin-bottom: 0.5rem;
       font-size: 1.2rem;
+      margin-bottom: 1rem;
+      color: #007533;
     }
 
     .step-description {
       font-size: 1rem;
       color: #555;
-      margin-bottom: 1rem;
     }
 
     form {
-      max-width: 500px;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      margin-top: 2rem;
     }
 
     .form-group {
+      display: flex;
+      flex-direction: column;
       margin-bottom: 1rem;
     }
 
     label {
-      display: block;
       margin-bottom: 0.5rem;
-      font-weight: bold;
     }
 
     input,
@@ -100,59 +116,46 @@
       padding: 0.5rem;
       border-radius: 4px;
       border: 1px solid #ccc;
-      width: 100%;
-      font-size: 1rem;
     }
 
-    button[type="submit"] {
-      background-color: #007533;
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      text-decoration: none;
-      font-size: 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      margin-top: 1rem;
-    }
-
-    button[type="submit"]:hover {
-      background-color: #004e1f;
-    }
-
-    footer {
-      background-color: #007533;
-      color: #deffde;
-      padding: 1rem 0;
-      text-align: center;
-      margin-top: 2rem;
-    }
-
-    footer a {
-      color: #deffde;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-  text-decoration: underline;
+button[type="submit"] {
+  background-color: #007533;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
 }
-
-@media screen and (max-width: 768px) {
-  main {
-    flex-direction: column;
-    margin-bottom: 1rem;
+  
+  button[type="submit"]:hover {
+    background-color: #005722;
   }
-
-  .three-steps {
-    flex-direction: column;
+  
+  @media only screen and (max-width: 768px) {
+    .three-steps {
+      flex-direction: column;
+    }
+    
+    .step {
+      flex-basis: 80%;
+    }
   }
-
-  .step {
-    flex-basis: 100%;
-    text-align: center;
-    margin-bottom: 2rem;
+  
+  @media only screen and (max-width: 500px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+    
+    .step {
+      flex-basis: 90%;
+    }
   }
-}
  </style>
 </head>
 <body>
@@ -161,55 +164,61 @@
   </header>
   <main>
     <section>
-      <h2>Vad är Fortnox?</h2>
-      <p>Fortnox erbjuder en molnbaserad plattform så att företag och redovisningsfirmor kan hantera sin ekonomi och administration effektivt. Plattformen är marknadsledande i Sverige. Det ger också kunder tillgång till finansiella tjänster och företagsförsäkringar. För mer information se <a href="https://www.fortnox.se">www.fortnox.se</a></p>
-    </section>
-    <section>
-      <h2>Kom Igång Med Tre Enkla Steg</h2>
+      <div>
+        <h2>Kom igång med tre enkla steg</h2>
+      </div>
       <div class="three-steps">
         <div class="step">
-          <div class="step-icon" style="background-image: url('ikon-1.png');"></div>
-          <div class="step-title">Steg 1</div>
-          <div class="step-description">Kontakta oss för att få API-nycklar och tillgång till anpassad kopplingspunkt.</div>
+          <div class="step-icon" style="background-image: url('ikon-1.png')"></div>
+          <div class="step-title">Skapa ett Fortnox-konto</div>
+          <div class="step-description">Gå till Fortnox hemsida och skapa ett konto. Det tar bara några minuter!</div>
         </div>
         <div class="step">
-          <div class="step-icon" style="background-image: url('ikon-2.png');"></div>
-          <div class="step-title">Steg 2</div>
-          <div class="step-description">Använd Fortnox-kopplingspunkten för att skapa anpassade flöden med Power Automate.</div>
+          <div class="step-icon" style="background-image: url('ikon-2.png')"></div>
+          <div class="step-title">Skapa en anpassad kopplingspunkt</div>
+          <div class="step-description">Använd vår swagger-fil för att skapa en anpassad kopplingspunkt som passar dina behov.</div>
         </div>
         <div class="step">
-          <div class="step-icon" style="background-image: url('ikon-3.png');"></div>
-          <div class="step-title">Steg 3</div>
-          <div class="step-description">Luta dig tillbaka och låt Fortnox API och Power Automate hantera din företagsadministration.</div>
+          <div class="step-icon" style="background-image: url('ikon-3.png')"></div>
+          <div class="step-title">Integrera med Power Automate</div>
+          <div class="step-description">Koppla ihop Fortnox API med andra appar och automatisera ditt företagsadministration med Power Automate.</div>
         </div>
       </div>
-    </section>
-    <section>
-      <h2>Kontakta Mig</h2>
-      <form action="https://formspree.io/f/xnqogzjd" method="POST">
-        <div class="form-group">
-          <label for="name">Namn:</label>
-          <input type="text" id="name" name="name" required>
-        </div>
-        <div class="form-group">
-          <label for="email">E-post:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Meddelande:</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
-        </div>
-        <button type="submit">Skicka</button>
-      </form>
-    </section>
-  </main>
-  <footer>
-    <p>Kontaktinformation:</p>
-    <p>Mathias Törnblom</p>
-    <p>E-post: <a href="mailto:mathias@tornbloms.net">mathias@tornbloms.net</a></p>
-    <p>Telefon: +46 709 49 90 10</p>
+    </section> <section>
+  <div>
+    <h2>Om Fortnox</h2>
+    <p>Fortnox erbjuder en molnbaserad plattform så att företag och redovisningsfirmor kan hantera sin ekonomi och administration effektivt. Plattformen är marknadsledande i Sverige. Det ger också kunder tillgång till finansiella tjänster och företagsförsäkringar. För mer information se <a href="https://www.fortnox.se">www.fortnox.se</a>.</p>
   </div>
-</div>
+</section>
+
+<section>
+  <div>
+    <h2>Kontakta mig</h2>
+    <p>Har du några frågor eller behöver du hjälp med att komma igång? Fyll i formuläret nedan så återkommer jag till dig så snart som möjligt!</p>
+  </div>
+  <div>
+    <form action="https://formspree.io/f/xknpkjao" method="POST">
+      <div class="form-group">
+        <label for="name">Namn</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">E-post</label>
+        <input type="email" id="email" name="_replyto" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Meddelande</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit">Skicka</button>
+    </form>
+  </div>
+</section>
+</main>
+  <footer>
+    <p>Mathias Törnblom</p>
+    <p>Email: <a href="mailto:mathias@tornbloms.net">mathias@tornbloms.net</a></p>
+    <p>Telefon: +46 709 49 90 10</p>
   </footer>
 </body>
 </html>
