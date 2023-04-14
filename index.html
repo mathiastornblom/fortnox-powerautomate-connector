@@ -120,7 +120,6 @@
   <main>
     <p>Create powerful automations for finance and business administration with the Fortnox API & Custom Connector for Power Automate. Easily manage invoices, inventory, customers, and suppliers directly in Microsoft Power Automate.</p>
     <p>Smoothly connect Fortnox API to your flows using the developed Custom Connector, creating automated processes tailored to your needs. Save time and reduce the risk of manual errors, providing your business with a competitive advantage.</p>
-    <p>Features include invoicing, customer management, and can be expanded upon request. Additionally, easily connect Fortnox API with other Power Automate services to further optimize your workflows.</p>
 <div class="cta-buttons">
 <a href="https://www.fortnox.se?utm_source=integrator&utm_medium=link&utm_campaign=fortnox-hos-integrator" class="cta-button">Learn More</a>
 </div>
@@ -131,8 +130,8 @@
 <li>Update inventory levels in Fortnox when new stock arrives at the warehouse</li>
 <li>Integrate customer data from Fortnox with a CRM tool like Salesforce or HubSpot</li>
 </ul>
-<h2 style="background-color: #deffde; color: #007533; padding: 0.5rem;">Contact Us</h2>
-<form action="mailto:mathias@tornblom.net" method="POST" enctype="text/plain">
+<h2 style="background-color: #deffde; color: #007533; padding: 0.5rem;">Contact Me</h2>
+<form id="contact-form" method="post" action="contact-form-handler.php">
 <div class="form-group">
 <label for="name">Name:</label>
 <input type="text" id="name" name="name" required>
@@ -155,5 +154,35 @@
     <p>Email: <a href="mailto:mathias@tornblom.net">mathias@tornblom.net</a></p>
     <p>Phone: +46 709 49 90 10</p>
   </footer>
+  <script>
+    const form = document.getElementById("contact-form");
+    const name = document.getElementById("name");
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = {
+    name: name.value,
+    email: email.value,
+    message: message.value,
+  };
+
+  fetch("contact-form-handler.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(formData),
+  })
+    .then((response) => {
+      if (response.ok) {
+        alert("Message sent. Thank you for contacting me!");
+        form.reset();
+      } else {
+        throw new Error("Message not sent");
+      }
+    })
+    .catch((error) => {
+      alert("There was an error sending your message. Please try again later.");
+    });
+});
+  </script>
 </body>
 </html>
