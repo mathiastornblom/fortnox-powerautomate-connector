@@ -6,91 +6,101 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Automatisera Ditt Företag Med Fortnox API & Anpassad Kopplingspunkt för Power Automate</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      background-color: #f4f4f4;
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    header {
-      background-color: #007533;
-      color: white;
-      padding: 1.5rem 0;
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
     }
 
-    header h1 {
-      margin: 0;
+    header {
+      background-color: #007533;
+      color: #deffde;
+      padding: 1.5rem 0;
       text-align: center;
     }
 
     main {
       max-width: 100%;
-      margin: 2rem auto;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
       background-color: white;
       padding: 2rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      grid-gap: 2rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 2rem;
     }
 
-    h2 {
-      margin-top: 0;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
+    h1 {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
       text-align: center;
-      background-color: #deffde;
-      color: #007533;
-      border-radius: 4px;
     }
 
     p {
       text-align: justify;
+      margin-bottom: 1rem;
     }
 
     .three-steps {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
+      align-items: flex-start;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
     }
 
     .step {
+      flex-basis: 30%;
       text-align: center;
     }
 
     .step-icon {
       width: 100px;
       height: 100px;
-      border-radius: 50%;
       background-repeat: no-repeat;
-      background-position: center center;
       background-size: contain;
       margin-bottom: 1rem;
-      background-color: #deffde;
     }
 
     .step-title {
-      font-size: 1.2rem;
+      font-weight: bold;
       margin-bottom: 0.5rem;
+      font-size: 1.2rem;
+    }
+
+    .step-description {
+      font-size: 1rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      max-width: 500px;
+      margin: 0 auto;
     }
 
     .form-group {
       margin-bottom: 1rem;
     }
 
-    label,
-    input[type="text"],
-    input[type="email"],
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    input,
     textarea {
-      width: 100%;
       padding: 0.5rem;
-      border: 1px solid #ccc;
       border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 100%;
       font-size: 1rem;
     }
 
@@ -103,96 +113,103 @@
       font-size: 1rem;
       border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      margin-top: 1rem;
     }
 
     button[type="submit"]:hover {
-      background-color: #005a1e;
+      background-color: #004e1f;
     }
 
     footer {
       background-color: #007533;
-      color: white;
+      color: #deffde;
       padding: 1rem 0;
       text-align: center;
       margin-top: 2rem;
-}
-   
-  footer a {
-  color: white;
-  text-decoration: none;
-}
+    }
 
-footer a:hover {
+    footer a {
+      color: #deffde;
+      text-decoration: none;
+    }
+
+    footer a:hover {
   text-decoration: underline;
 }
 
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   main {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    margin-bottom: 1rem;
   }
 
   .three-steps {
     flex-direction: column;
   }
+
+  .step {
+    flex-basis: 100%;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 }
-</style>
+ </style>
 </head>
 <body>
   <header>
     <h1>Automatisera Ditt Företag Med Fortnox API & Anpassad Kopplingspunkt för Power Automate</h1>
   </header>
   <main>
-    <div>
-      <p>Skapa kraftfulla automatiseringar för finans och företagsadministration med Fortnox API & Anpassad Kopplingspunkt för Power Automate. Hantera enkelt fakturor, lager, kunder och leverantörer direkt i Microsoft Power Automate.</p>
-      <p>Anslut enkelt Fortnox API till dina flöden med den utvecklade anpassade kopplingspunkten och skapa automatiserade processer som är anpassade efter dina behov. Spara tid och minska risken för manuella fel och ge ditt företag en konkurrensfördel.</p>
-      <p>Funktioner inkluderar fakturering, kundhantering och kan utökas på begäran. Dessutom kan Fortnox API enkelt anslutas till andra Power Automate-tjänster för att ytterligare optimera dina arbetsflöden.</p>
+    <section>
+      <h2>Vad är Fortnox?</h2>
+      <p>Fortnox erbjuder en molnbaserad plattform så att företag och redovisningsfirmor kan hantera sin ekonomi och administration effektivt. Plattformen är marknadsledande i Sverige. Det ger också kunder tillgång till finansiella tjänster och företagsförsäkringar. För mer information se <a href="https://www.fortnox.se">www.fortnox.se</a></p>
+    </section>
+    <section>
       <h2>Kom Igång Med Tre Enkla Steg</h2>
       <div class="three-steps">
         <div class="step">
-          <div class="step-icon" style="background-image: url('https://github.com/mathiastornblom/fortnox-powerautomate-connector/blob/main/ikon-1.png?raw=true');"></div>
-          <div class="step-title">Skapa En App I Fortnox</div>
-          <div class="step-description">Skapa en app i Fortnox med behörigheter för de API-anrop som du vill använda.</div>
+          <div class="step-icon" style="background-image: url('ikon-1.png');"></div>
+          <div class="step-title">Steg 1</div>
+          <div class="step-description">Kontakta oss för att få API-nycklar och tillgång till anpassad kopplingspunkt.</div>
         </div>
         <div class="step">
-          <div class="step-icon" style="background-image: url('https://github.com/mathiastornblom/fortnox-powerautomate-connector/blob/main/ikon-2.png?raw=true');"></div>
-          <div class="step-title">Lägg Till En Anpassad Kopplingspunkt I Power Automate</div>
-          <div class="step-description">Lägg till anpassad kopplingspunkt i Power Automate och använd dina Fortnox-API-anrop i dina flöden.</div>
+          <div class="step-icon" style="background-image: url('ikon-2.png');"></div>
+          <div class="step-title">Steg 2</div>
+          <div class="step-description">Använd Fortnox-kopplingspunkten för att skapa anpassade flöden med Power Automate.</div>
         </div>
         <div class="step">
-          <div class="step-icon" style="background-image: url('https://github.com/mathiastornblom/fortnox-powerautomate-connector/blob/main/ikon-3.png?raw=true');"></div>
-          <div class="step-title">Bygg Dina Automatiseringar</div>
-          <div class="step-description">Bygg dina automatiseringar i Power Automate och effektivisera dina företagsprocesser.</div>
+          <div class="step-icon" style="background-image: url('ikon-3.png');"></div>
+          <div class="step-title">Steg 3</div>
+          <div class="step-description">Luta dig tillbaka och låt Fortnox API och Power Automate hantera din företagsadministration.</div>
         </div>
       </div>
-    </div>
-    <div>
+    </section>
+    <section>
       <h2>Kontakta Mig</h2>
-      <form action="mailto:mathias@tornblom.net" method="post">
-<div class="form-group">
-<label for="name">Namn:</label>
-<input type="text" id="name" name="name" required>
-</div>
-<div class="form-group">
-<label for="email">E-post:</label>
-<input type="email" id="email" name="email" required>
-</div>
-<div class="form-group">
-<label for="message">Meddelande:</label>
-<textarea id="message" name="message" rows="4" required></textarea>
-</div>
-<button type="submit">Skicka</button>
-</form>
-</div>
-
+      <form action="https://formspree.io/f/xnqogzjd" method="POST">
+        <div class="form-group">
+          <label for="name">Namn:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">E-post:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Meddelande:</label>
+          <textarea id="message" name="message" rows="4" required></textarea>
+        </div>
+        <button type="submit">Skicka</button>
+      </form>
+    </section>
   </main>
   <footer>
     <p>Kontaktinformation:</p>
     <p>Mathias Törnblom</p>
-    <p>E-post: <a href="mailto:mathias@tornblom.net">mathias@tornblom.net</a></p>
+    <p>E-post: <a href="mailto:mathias@tornbloms.net">mathias@tornbloms.net</a></p>
     <p>Telefon: +46 709 49 90 10</p>
-    <p>Om Fortnox</p>
-    <p>Fortnox erbjuder en molnbaserad plattform så att företag och redovisningsfirmor kan hantera sin ekonomi och administration effektivt. Plattformen är marknadsledande i Sverige. Det ger också kunder tillgång till finansiella tjänster och företagsförsäkringar. För mer information se <a href="https://www.fortnox.se">www.fortnox.se</a></p>
+  </div>
+</div>
   </footer>
 </body>
 </html>
