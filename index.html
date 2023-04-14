@@ -1,90 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fortnox API & Custom Connector for Power Automate</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #3f51b5;
-            color: white;
-            padding: 1.5rem 0;
-        }
-        header h1 {
-            margin: 0;
-            text-align: center;
-        }
-        main {
-            background-color: white;
-            padding: 2rem;
-            max-width: 800px;
-            margin: 2rem auto;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-        }
-        main p {
-            text-align: justify;
-        }
-        .cta-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        .cta-button {
-            background-color: #3f51b5;
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .cta-button:hover {
-            background-color: #283593;
-        }
-        footer {
-            background-color: #3f51b5;
-            color: white;
-            padding: 1rem 0;
-            text-align: center;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automate Your Business with Fortnox API & Custom Connector for Power Automate</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #3f51b5;
+      color: white;
+      padding: 1.5rem 0;
+    }
+
+    header h1 {
+      margin: 0;
+      text-align: center;
+    }
+
+    main {
+      background-color: white;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
+
+    main p {
+      text-align: justify;
+    }
+
+    .cta-button {
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .cta-button:hover {
+      background-color: #283593;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      margin-bottom: 1rem;
+    }
+
+    textarea {
+      height: 10rem;
+    }
+
+    button[type="submit"] {
+      background-color: #3f51b5;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #283593;
+    }
+
+    footer {
+      background-color: #3f51b5;
+      color: white;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    footer a {
+      color: white;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
+
 <body>
-    <header>
-        <h1>Fortnox API & Custom Connector for Power Automate</h1>
-    </header>
-    <main>
-        <p>Create powerful automations for finance and business administration with the Fortnox API & Custom Connector for Power Automate. Easily manage invoices, inventory, customers, and suppliers directly in Microsoft Power Automate.</p>
-        <p>Smoothly connect Fortnox API to your flows using the developed Custom Connector, creating automated processes tailored to your needs. Save time and reduce the risk of manual errors, providing your business with a competitive advantage.</p>
-        <p>Features include invoicing, customer management, and can be expanded upon request. Additionally, easily connect Fortnox API with other Power Automate services to further optimize your workflows.</p>
-        <div class="cta-buttons">
-            <a href="mailto:mathias@tornblom.net" class="cta-button">Send Email</a>
-            <a href="https://github.com/mathiastornblom/fortnox-powerautomate-connector/raw/main/FortnoxAPI.swagger.json" download class="cta-button">Download JSON</a>
-        </div>
-    </main>
-    <footer>
-        <p>Contact Information:</p>
-        <p>Mathias Törnblom</p>
-        <p>Email: <a href="mailto:mathias@tornblom.net">mathias@tornblom.net</a></
-<p></p>
-        <p>Phone: +46 709 49 90 10</p>
-    </footer>
+  <header>
+    <h1>Automate Your Business with Fortnox API & Custom Connector for Power Automate</h1>
+  </header>
+  <main>
+    <p>Create powerful automations for finance and business administration with the Fortnox API & Custom Connector for Power Automate. Easily manage invoices, inventory, customers, and suppliers directly in Microsoft Power Automate.</p>
+    <p>Smoothly connect Fortnox API to your flows using the developed Custom Connector, creating automated processes tailored to your needs. Save time and reduce the risk of manual errors, providing your business with a competitive advantage.</p>
+<p>Features include invoicing, customer management, and can be expanded upon request. Additionally, easily connect Fortnox API with other Power Automate services to further optimize your workflows.</p>
+<div class="cta-buttons">
+<a href="https://www.fortnox.se?utm_source=integrator&utm_medium=link&utm_campaign=fortnox-hos-integrator" class="cta-button">Learn More</a>
+</div>
+<h2>Example Flows</h2>
+<ul>
+<li>Automatically create invoices in Fortnox when a new order is received in Shopify</li>
+<li>Send notifications to customers when their orders have shipped, using Fortnox data</li>
+<li>Update inventory levels in Fortnox when new stock arrives at the warehouse</li>
+<li>Integrate customer data from Fortnox with a CRM tool like Salesforce or HubSpot</li>
+</ul>
+<h2>Contact Us</h2>
+<form action="mailto:your-email-address@example.com" method="POST" enctype="text/plain">
+<div class="form-group">
+<label for="name">Name:</label>
+<input type="text" id="name" name="name" required>
+</div>
+<div class="form-group">
+<label for="email">Email:</label>
+<input type="email" id="email" name="email" required>
+</div>
+<div class="form-group">
+<label for="message">Message:</label>
+<textarea id="message" name="message" required></textarea>
+</div>
+<button type="submit">Send Message</button>
+</form>
+
+  </main>
+  <footer>
+    <p>Contact Information:</p>
+    <p>Your Name</p>
+    <p>Email: <a href="mailto:your-email-address@example.com">your-email-address@example.com</a></p>
+    <p>Phone: +1 (555) 555-5555</p>
+  </footer>
 </body>
 </html>
