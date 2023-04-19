@@ -1,0 +1,90 @@
+{
+    "properties": {
+        "connectionParameters": {
+            "token": {
+                "type": "oauthSetting",
+                "oAuthSettings": {
+                    "identityProvider": "oauth2",
+                    "clientId": "qlpxv2sAL9Ju",
+                    "clientSecret": "{{ Client Secret }}",
+                    "scopes": {
+                        "salary": "Read/write access to salary data",
+                        "bookkeeping": "Read/write access to bookkeeping data",
+                        "archive": "Read/write access to archive data",
+                        "article": "Read/write access to article data",
+                        "companyinformation": "Read/write access to company information data",
+                        "settings": "Read/write access to settings data",
+                        "invoice": "Read/write access to invoice data",
+                        "costcenter": "Read/write access to cost center data",
+                        "currency": "Read/write access to currency data",
+                        "customer": "Read/write access to customer data",
+                        "inbox": "Read/write access to inbox data",
+                        "payment": "Read/write access to payment data",
+                        "offer": "Read/write access to offer data",
+                        "order": "Read/write access to order data",
+                        "price": "Read/write access to price data",
+                        "print": "Read/write access to print data",
+                        "project": "Read/write access to project data",
+                        "profile": "Read/write access to profile data",
+                        "supplierinvoice": "Read/write access to supplier invoice data",
+                        "supplier": "Read/write access to supplier data"
+                    },
+                    "redirectMode": "Global",
+                    "redirectUrl": "https://global.consent.azure-apim.net/redirect",
+                    "properties": {
+                        "IsFirstParty": "False",
+                        "IsOnbehalfofLoginSupported": false
+                    },
+                    "customParameters": {
+                        "authorizationUrl": {
+                            "value": "https://apps.fortnox.se/oauth-v1/auth"
+                        },
+                        "tokenUrl": {
+                            "value": "https://apps.fortnox.se/oauth-v1/auth"
+                        },
+                        "refreshUrl": {
+                            "value": "https://apps.fortnox.se/oauth-v1/auth"
+                        }
+                    }
+                }
+            }
+        },
+        "iconBrandColor": "#007ee5",
+        "policyTemplateInstances": [
+            {
+                "parameters": {
+                    "x-ms-apimTemplateParameter.name": "Content-Type",
+                    "x-ms-apimTemplateParameter.value": "application/json",
+                    "x-ms-apimTemplate-policySection": "Request",
+                    "x-ms-apimTemplateParameter.existsAction": "override"
+                },
+                "templateId": "setHeader",
+                "title": "Set Content-Type HTTP header"
+            },
+            {
+                "parameters": {
+                    "x-ms-apimTemplateParameter.name": "Accept",
+                    "x-ms-apimTemplateParameter.value": "application/json",
+                    "x-ms-apimTemplate-policySection": "Request",
+                    "x-ms-apimTemplateParameter.existsAction": "override"
+                },
+                "templateId": "setHeader",
+                "title": "Set Accept HTTP header"
+            },
+            {
+                "parameters": {
+                    "x-ms-apimTemplate-operationName": ["PreviewInvoice"],
+                    "x-ms-apimTemplateParameter.name": "Content-Type",
+                    "x-ms-apimTemplateParameter.value": "application/pfd",
+                    "x-ms-apimTemplate-policySection": "Response",
+                    "x-ms-apimTemplateParameter.existsAction": "override"
+                },
+                "templateId": "setHeader",
+                "title": "Set Content-Type PDF HTTP header"
+            }
+        ],
+        "capabilities": ["actions"],
+        "publisher": "Mathias Törnblom",
+        "stackOwner": "Mathias Törnblom"
+    }
+}
