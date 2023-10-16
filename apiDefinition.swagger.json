@@ -11,21 +11,13 @@
   },
   "host": "api.fortnox.se",
   "basePath": "/3/",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "paths": {
     "/accounts/{Number}": {
       "get": {
-        "tags": [
-          "Accounts"
-        ],
+        "tags": ["Accounts"],
         "responses": {
           "200": {
             "description": "OK",
@@ -46,11 +38,7 @@
                       "description": "Active",
                       "title": "",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ]
+                      "enum": ["", "true", "false"]
                     },
                     "BalanceBroughtForward": {
                       "type": "number",
@@ -209,9 +197,7 @@
     },
     "/customers": {
       "get": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "summary": "List Customers",
         "description": "Customers",
         "operationId": "GetAllCustomers",
@@ -230,10 +216,7 @@
             "type": "string",
             "required": false,
             "x-ms-visibility": "advanced",
-            "enum": [
-              "active",
-              "inactive"
-            ]
+            "enum": ["active", "inactive"]
           },
           {
             "name": "page",
@@ -380,9 +363,7 @@
     },
     "/customers/{CustomerNumber}": {
       "get": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "responses": {
           "200": {
             "description": "OK",
@@ -719,9 +700,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "responses": {
           "200": {
             "description": "OK",
@@ -758,9 +737,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "responses": {
           "200": {
             "description": "OK",
@@ -1403,9 +1380,7 @@
     },
     "/orders": {
       "post": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "responses": {
           "200": {
             "description": "OK",
@@ -1996,11 +1971,7 @@
                       "description": "DeliveryState",
                       "title": "Delivery State",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "registration",
-                        "reservation",
-                        "delivery"
-                      ]
+                      "enum": ["registration", "reservation", "delivery"]
                     },
                     "DeliveryAddress1": {
                       "type": "string",
@@ -2380,15 +2351,11 @@
                     }
                   },
                   "description": "Order",
-                  "required": [
-                    "CustomerNumber"
-                  ]
+                  "required": ["CustomerNumber"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "Order"
-              ]
+              "required": ["Order"]
             },
             "x-ms-visibility": "important"
           },
@@ -2413,9 +2380,7 @@
     },
     "/invoices": {
       "post": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3472,15 +3437,11 @@
                     }
                   },
                   "title": "Invoice",
-                  "required": [
-                    "CustomerNumber"
-                  ]
+                  "required": ["CustomerNumber"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "Invoice"
-              ]
+              "required": ["Invoice"]
             },
             "x-ms-visibility": "important"
           },
@@ -3505,9 +3466,7 @@
     },
     "/invoices/": {
       "get": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3784,9 +3743,7 @@
     },
     "/invoices/{DocumentNumber}/preview": {
       "get": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3840,9 +3797,7 @@
     },
     "/invoices/{DocumentNumber}/cancel": {
       "put": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -4992,9 +4947,7 @@
     },
     "/companyinformation": {
       "get": {
-        "tags": [
-          "Company Information"
-        ],
+        "tags": ["Company Information"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5088,9 +5041,7 @@
     },
     "/invoices/{DocumentNumber}": {
       "get": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5685,9 +5636,7 @@
     },
     "/currencies": {
       "get": {
-        "tags": [
-          "Currencies"
-        ],
+        "tags": ["Currencies"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5773,11 +5722,7 @@
                         "type": "boolean",
                         "description": "Is Automatic",
                         "title": "Is Automatic",
-                        "enum": [
-                          "",
-                          "true",
-                          "false"
-                        ],
+                        "enum": ["", "true", "false"],
                         "x-ms-visibility": "advanced"
                       }
                     }
@@ -5814,9 +5759,7 @@
     },
     "/currencies/{Code}": {
       "get": {
-        "tags": [
-          "Currencies"
-        ],
+        "tags": ["Currencies"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5874,11 +5817,7 @@
                       "type": "boolean",
                       "description": "Is Automatic",
                       "title": "Is Automatic",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": ["", "true", "false"],
                       "x-ms-visibility": "advanced"
                     }
                   },
@@ -5923,9 +5862,7 @@
     },
     "/vouchers": {
       "get": {
-        "tags": [
-          "Vouchers"
-        ],
+        "tags": ["Vouchers"],
         "responses": {
           "200": {
             "description": "default",
@@ -6096,9 +6033,7 @@
     "/vouchers/A/1": {},
     "/vouchers/{VoucherSeries}/{VoucherNumber}": {
       "get": {
-        "tags": [
-          "Vouchers"
-        ],
+        "tags": ["Vouchers"],
         "responses": {
           "200": {
             "description": "default",
@@ -6204,11 +6139,7 @@
                             "type": "boolean",
                             "description": "Removed",
                             "title": "Removed",
-                            "enum": [
-                              "",
-                              "true",
-                              "false"
-                            ],
+                            "enum": ["", "true", "false"],
                             "x-ms-visibility": "advanced"
                           },
                           "TransactionInformation": {
@@ -6303,9 +6234,7 @@
     },
     "/absencetransactions": {
       "get": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
             "description": "default",
@@ -6386,11 +6315,7 @@
                         "description": "HolidayEntitling",
                         "title": "Holiday Entitling",
                         "x-ms-visibility": "advanced",
-                        "enum": [
-                          "",
-                          "true",
-                          "false"
-                        ]
+                        "enum": ["", "true", "false"]
                       },
                       "Hours": {
                         "type": "number",
@@ -6472,10 +6397,7 @@
             "type": "string",
             "required": false,
             "x-ms-visibility": "advanced",
-            "enum": [
-              "active",
-              "inactive"
-            ]
+            "enum": ["active", "inactive"]
           },
           {
             "name": "page",
@@ -6532,9 +6454,7 @@
         ]
       },
       "post": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "201": {
             "description": "default",
@@ -6586,11 +6506,7 @@
                       "type": "boolean",
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": ["", "true", "false"],
                       "x-ms-visibility": "advanced"
                     },
                     "Hours": {
@@ -6743,11 +6659,7 @@
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "",
-                        true,
-                        false
-                      ]
+                      "enum": ["", true, false]
                     },
                     "Hours": {
                       "type": "number",
@@ -6764,17 +6676,11 @@
                     }
                   },
                   "description": "AbsenceTransaction",
-                  "required": [
-                    "CauseCode",
-                    "Date",
-                    "EmployeeId"
-                  ]
+                  "required": ["CauseCode", "Date", "EmployeeId"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "AbsenceTransaction"
-              ]
+              "required": ["AbsenceTransaction"]
             },
             "x-ms-visibility": "important"
           }
@@ -6783,9 +6689,7 @@
     },
     "/absencetransactions/{id}": {
       "get": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
             "description": "default",
@@ -6836,11 +6740,7 @@
                       "type": "boolean",
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": ["", "true", "false"],
                       "x-ms-visibility": "advanced"
                     },
                     "Hours": {
@@ -6936,9 +6836,7 @@
         ]
       },
       "delete": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
             "description": "default",
@@ -7012,9 +6910,7 @@
         ]
       },
       "put": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
             "description": "default",
@@ -7066,11 +6962,7 @@
                       "type": "boolean",
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": ["", "true", "false"],
                       "x-ms-visibility": "advanced"
                     },
                     "Hours": {
@@ -7232,11 +7124,7 @@
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "",
-                        true,
-                        false
-                      ]
+                      "enum": ["", true, false]
                     },
                     "Hours": {
                       "type": "number",
@@ -7253,17 +7141,11 @@
                     }
                   },
                   "description": "AbsenceTransaction",
-                  "required": [
-                    "CauseCode",
-                    "Date",
-                    "EmployeeId"
-                  ]
+                  "required": ["CauseCode", "Date", "EmployeeId"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "AbsenceTransaction"
-              ]
+              "required": ["AbsenceTransaction"]
             },
             "x-ms-visibility": "important"
           }
