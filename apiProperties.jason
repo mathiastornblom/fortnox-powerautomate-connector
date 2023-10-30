@@ -40,10 +40,10 @@
                             "value": "https://apps.fortnox.se/oauth-v1/auth"
                         },
                         "tokenUrl": {
-                            "value": "https://apps.fortnox.se/oauth-v1/auth"
+                            "value": "https://apps.fortnox.se/oauth-v1/token"
                         },
                         "refreshUrl": {
-                            "value": "https://apps.fortnox.se/oauth-v1/auth"
+                            "value": "https://apps.fortnox.se/oauth-v1/token"
                         }
                     }
                 }
