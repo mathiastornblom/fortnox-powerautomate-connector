@@ -49,7 +49,7 @@
                 }
             }
         },
-        "iconBrandColor": "#007ee5",
+        "iconBrandColor": "#da3b01",
         "policyTemplateInstances": [
             {
                 "parameters": {
