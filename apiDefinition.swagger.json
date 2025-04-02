@@ -232,7 +232,6 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
             "description": "Retrieves all records since the provided timestamp."
           },
           {
@@ -3719,7 +3718,6 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
             "description": "Retrieves all records since the provided timestamp."
           },
           {
@@ -3750,8 +3748,7 @@
             "schema": {
               "description": "Returns an invoice in PDF format",
               "title": "PDF",
-              "type": "file",
-              "x-ms-visibility": "important"
+              "type": "file"
             },
             "headers": {
               "Content-Type": {
@@ -6024,7 +6021,6 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
             "description": "Retrieves all records since the provided timestamp."
           }
         ]
@@ -6413,7 +6409,6 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
             "description": "Retrieves all records since the provided timestamp."
           },
           {
@@ -6486,7 +6481,6 @@
                       "type": "string",
                       "description": "Date",
                       "title": "Date",
-                      "format": "",
                       "x-ms-visibility": "important"
                     },
                     "EmployeeId": {
@@ -6942,7 +6936,6 @@
                       "type": "string",
                       "description": "Date",
                       "title": "Date",
-                      "format": "",
                       "x-ms-visibility": "important"
                     },
                     "EmployeeId": {
