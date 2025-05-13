@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "title": "Fortnox Integration",
-    "version": "1.0.12",
+    "version": "1.0.13",
     "description": "Creates a Custom Connection to Fortnox",
     "contact": {
       "name": "Mathias Törnblom",
