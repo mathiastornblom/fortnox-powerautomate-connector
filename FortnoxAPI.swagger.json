@@ -1,9 +1,9 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "Fortnox API",
-    "version": "1.0.11",
-    "description": "Creates a Custom Connection to Fortnox API",
+    "title": "Fortnox Integration",
+    "version": "1.0.13",
+    "description": "Creates a Custom Connection to Fortnox",
     "contact": {
       "name": "Mathias Törnblom",
       "email": "mathias@tornbloms.net"
@@ -11,21 +11,13 @@
   },
   "host": "api.fortnox.se",
   "basePath": "/3/",
-  "schemes": [
-    "https"
-  ],
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ],
+  "schemes": ["https"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
   "paths": {
     "/accounts/{Number}": {
       "get": {
-        "tags": [
-          "Accounts"
-        ],
+        "tags": ["Accounts"],
         "responses": {
           "200": {
             "description": "OK",
@@ -46,11 +38,7 @@
                       "description": "Active",
                       "title": "",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ]
+                      "enum": [true, false]
                     },
                     "BalanceBroughtForward": {
                       "type": "number",
@@ -177,6 +165,7 @@
         "description": "Retrieves the details of an account. You need to supply the unique account number that was returned when the account was created or retrieved from the list of accounts.",
         "operationId": "GetAccount",
         "x-ms-visibility": "advanced",
+        "x-ms-url-encoding": "single",
         "parameters": [
           {
             "name": "Number",
@@ -186,7 +175,8 @@
             "x-ms-visibility": "important",
             "description": "Identifies the account",
             "format": "int32",
-            "x-ms-summary": "Account number"
+            "x-ms-summary": "Account number",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -194,7 +184,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Content-Type",
+            "description": "Content-Type"
           },
           {
             "name": "Accept",
@@ -202,16 +194,16 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Accept",
+            "description": "Accept"
           }
         ]
       }
     },
     "/customers": {
       "get": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "summary": "List Customers",
         "description": "Customers",
         "operationId": "GetAllCustomers",
@@ -222,7 +214,9 @@
             "in": "query",
             "type": "integer",
             "required": false,
-            "x-ms-visibility": "advanced"
+            "x-ms-visibility": "advanced",
+            "x-ms-summary": "Limit",
+            "description": "Optional limit of responces per page"
           },
           {
             "name": "filter",
@@ -230,10 +224,9 @@
             "type": "string",
             "required": false,
             "x-ms-visibility": "advanced",
-            "enum": [
-              "active",
-              "inactive"
-            ]
+            "enum": ["active", "inactive"],
+            "x-ms-summary": "Filter",
+            "description": "Optional filter of active or inactive customers"
           },
           {
             "name": "page",
@@ -241,7 +234,9 @@
             "type": "integer",
             "required": false,
             "x-ms-visibility": "advanced",
-            "format": "int32"
+            "format": "int32",
+            "x-ms-summary": "Page",
+            "description": "Optional set the page number to be returned"
           },
           {
             "name": "lastmodified",
@@ -249,8 +244,8 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
-            "description": "Retrieves all records since the provided timestamp."
+            "x-ms-summary": "Last modified since",
+            "description": "Optional filter to get all records since the provided timestamp"
           },
           {
             "name": "Content-Type",
@@ -258,7 +253,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Content-Type",
+            "description": "Content-Type"
           },
           {
             "name": "Accept",
@@ -266,7 +263,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Accept",
+            "description": "Accept"
           }
         ],
         "responses": {
@@ -380,9 +379,7 @@
     },
     "/customers/{CustomerNumber}": {
       "get": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "responses": {
           "200": {
             "description": "OK",
@@ -697,8 +694,10 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "identifies the customer",
-            "x-ms-visibility": "important"
+            "x-ms-summary": "Customer number",
+            "description": "Unique identifier for the customer to be retrieved",
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -706,7 +705,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Content-Type",
+            "description": "Content-Type"
           },
           {
             "name": "Accept",
@@ -714,18 +715,20 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Accept",
+            "description": "Accept"
           }
         ]
       },
       "delete": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "responses": {
           "200": {
-            "description": "OK",
-            "schema": {}
+            "description": "Successfully deleted",
+            "schema": {
+              "type": "object"
+            }
           }
         },
         "summary": "Delete a customer",
@@ -737,7 +740,10 @@
             "name": "CustomerNumber",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "x-ms-summary": "Customer number",
+            "description": "Unique identifier for the customer to be deleted",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -745,7 +751,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Content-Type",
+            "description": "Content-Type"
           },
           {
             "name": "Accept",
@@ -753,14 +761,14 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Accept",
+            "description": "Accept"
           }
         ]
       },
       "put": {
-        "tags": [
-          "Customers"
-        ],
+        "tags": ["Customers"],
         "responses": {
           "200": {
             "description": "OK",
@@ -1075,9 +1083,10 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Identifies the customer",
-            "x-ms-summary": "Identifies the customer",
-            "x-ms-visibility": "important"
+            "x-ms-summary": "Customer number",
+            "description": "Unique identifier for the customer to be updated",
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -1403,9 +1412,7 @@
     },
     "/orders": {
       "post": {
-        "tags": [
-          "Orders"
-        ],
+        "tags": ["Orders"],
         "responses": {
           "200": {
             "description": "OK",
@@ -1996,11 +2003,7 @@
                       "description": "DeliveryState",
                       "title": "Delivery State",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "registration",
-                        "reservation",
-                        "delivery"
-                      ]
+                      "enum": ["registration", "reservation", "delivery"]
                     },
                     "DeliveryAddress1": {
                       "type": "string",
@@ -2380,15 +2383,11 @@
                     }
                   },
                   "description": "Order",
-                  "required": [
-                    "CustomerNumber"
-                  ]
+                  "required": ["CustomerNumber"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "Order"
-              ]
+              "required": ["Order"]
             },
             "x-ms-visibility": "important"
           },
@@ -2413,9 +2412,7 @@
     },
     "/invoices": {
       "post": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -2452,13 +2449,11 @@
                       "description": "Address2"
                     },
                     "Balance": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Balance"
                     },
                     "BasisTaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "BasisTaxReduction"
                     },
                     "Booked": {
@@ -2483,13 +2478,11 @@
                       "description": "ContractReference"
                     },
                     "ContributionPercent": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionPercent"
                     },
                     "ContributionValue": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionValue"
                     },
                     "Country": {
@@ -2513,13 +2506,11 @@
                       "description": "Currency"
                     },
                     "CurrencyRate": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyRate"
                     },
                     "CurrencyUnit": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyUnit"
                     },
                     "CustomerName": {
@@ -2643,18 +2634,15 @@
                       "description": "ExternalInvoiceReference2"
                     },
                     "Freight": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Freight"
                     },
                     "FreightVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "FreightVAT"
                     },
                     "Gross": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Gross"
                     },
                     "HouseWork": {
@@ -2712,8 +2700,7 @@
                             "description": "Description"
                           },
                           "Discount": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Discount"
                           },
                           "DiscountType": {
@@ -2725,8 +2712,7 @@
                             "description": "HouseWork"
                           },
                           "HouseWorkHoursToReport": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "HouseWorkHoursToReport"
                           },
                           "HouseWorkType": {
@@ -2734,13 +2720,11 @@
                             "description": "HouseWorkType"
                           },
                           "Price": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Price"
                           },
                           "PriceExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "PriceExcludingVAT"
                           },
                           "Project": {
@@ -2757,13 +2741,11 @@
                             "description": "StockPointCode"
                           },
                           "Total": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Total"
                           },
                           "TotalExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "TotalExcludingVAT"
                           },
                           "Unit": {
@@ -2771,8 +2753,7 @@
                             "description": "Unit"
                           },
                           "VAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "VAT"
                           }
                         }
@@ -2806,8 +2787,7 @@
                       "description": "LastRemindDate"
                     },
                     "Net": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Net"
                     },
                     "NotCompleted": {
@@ -2880,8 +2860,7 @@
                       "description": "Reminders"
                     },
                     "RoundOff": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "RoundOff"
                     },
                     "Sent": {
@@ -2889,8 +2868,7 @@
                       "description": "Sent"
                     },
                     "TaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TaxReduction"
                     },
                     "TermsOfDelivery": {
@@ -2902,23 +2880,19 @@
                       "description": "TermsOfPayment"
                     },
                     "TimeBasisReference": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TimeBasisReference"
                     },
                     "Total": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Total"
                     },
                     "TotalToPay": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalToPay"
                     },
                     "TotalVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalVAT"
                     },
                     "VATIncluded": {
@@ -2986,47 +2960,47 @@
             }
           },
           "400": {
-            "description": "Error",
+            "description": "Bad Request",
             "schema": {
               "type": "object",
               "properties": {
                 "ErrorInformation": {
                   "type": "object",
                   "properties": {
-                    "error": {
+                    "Code": {
                       "type": "integer",
                       "format": "int32",
-                      "description": "error",
-                      "title": "Error",
+                      "description": "Code",
+                      "title": "Code",
                       "x-ms-visibility": "important"
                     },
-                    "message": {
-                      "type": "string",
-                      "description": "message",
-                      "title": "Message"
-                    },
-                    "code": {
+                    "Error": {
                       "type": "integer",
                       "format": "int32",
-                      "description": "code",
+                      "description": "Error",
                       "title": "Code",
+                      "x-ms-visibility": "important"
+                    },
+                    "Message": {
+                      "type": "string",
+                      "description": "Message",
+                      "title": "Message",
                       "x-ms-visibility": "important"
                     }
                   },
                   "description": "ErrorInformation"
                 }
               }
-            },
-            "headers": {
-              "Content-Type": {
-                "description": "Content-Type",
-                "type": "string"
-              },
-              "Accept": {
-                "description": "Accept",
-                "type": "string"
-              }
             }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "summary": "Create an invoice",
@@ -3045,8 +3019,7 @@
                   "type": "object",
                   "properties": {
                     "AdministrationFee": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "title": "Administration Fee",
                       "x-ms-visibility": "advanced"
                     },
@@ -3092,14 +3065,12 @@
                       "x-ms-visibility": "advanced"
                     },
                     "CurrencyRate": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "title": "Currency Rate",
                       "x-ms-visibility": "advanced"
                     },
                     "CurrencyUnit": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "title": "Currency Unit",
                       "x-ms-visibility": "advanced"
                     },
@@ -3247,8 +3218,7 @@
                       "x-ms-visibility": "advanced"
                     },
                     "Freight": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "title": "Freight",
                       "x-ms-visibility": "advanced"
                     },
@@ -3288,8 +3258,7 @@
                             "x-ms-visibility": "important"
                           },
                           "Discount": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "title": "Discount",
                             "x-ms-visibility": "advanced"
                           },
@@ -3303,8 +3272,7 @@
                             "x-ms-visibility": "advanced"
                           },
                           "HouseWorkHoursToReport": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "title": "House Work Hours To Report",
                             "x-ms-visibility": "advanced"
                           },
@@ -3314,8 +3282,7 @@
                             "x-ms-visibility": "advanced"
                           },
                           "Price": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "title": "Price",
                             "x-ms-visibility": "important"
                           },
@@ -3340,8 +3307,7 @@
                             "x-ms-visibility": "advanced"
                           },
                           "VAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "title": "VAT",
                             "x-ms-visibility": "advanced"
                           }
@@ -3472,15 +3438,11 @@
                     }
                   },
                   "title": "Invoice",
-                  "required": [
-                    "CustomerNumber"
-                  ]
+                  "required": ["CustomerNumber"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "Invoice"
-              ]
+              "required": ["Invoice"]
             },
             "x-ms-visibility": "important"
           },
@@ -3505,9 +3467,7 @@
     },
     "/invoices/": {
       "get": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3553,8 +3513,7 @@
                         "x-ms-visibility": "important"
                       },
                       "Balance": {
-                        "type": "integer",
-                        "format": "int32",
+                        "type": "number",
                         "description": "Balance",
                         "x-ms-visibility": "important"
                       },
@@ -3584,8 +3543,7 @@
                         "x-ms-visibility": "advanced"
                       },
                       "CurrencyUnit": {
-                        "type": "integer",
-                        "format": "int32",
+                        "type": "number",
                         "description": "CurrencyUnit",
                         "x-ms-visibility": "advanced"
                       },
@@ -3678,8 +3636,7 @@
                         "x-ms-visibility": "important"
                       },
                       "Total": {
-                        "type": "integer",
-                        "format": "int32",
+                        "type": "number",
                         "description": "Total",
                         "x-ms-visibility": "important"
                       },
@@ -3713,14 +3670,18 @@
               "unpaidoverdue",
               "unbooked"
             ],
-            "x-ms-visibility": "advanced"
+            "x-ms-visibility": "advanced",
+            "description": "Filter the invoices by status. Possible values are: cancelled, fullypaid, unpaid, unpaidoverdue, unbooked.",
+            "x-ms-summary": "Filter"
           },
           {
             "name": "sortby",
             "in": "query",
             "required": false,
             "type": "string",
-            "x-ms-visibility": "advanced"
+            "x-ms-visibility": "advanced",
+            "description": "Sort the invoices by a specific field. Possible values are: DocumentNumber, InvoiceDate, DueDate, CustomerName, Balance, Total.",
+            "x-ms-summary": "Sort"
           },
           {
             "name": "limit",
@@ -3729,7 +3690,9 @@
             "type": "integer",
             "x-ms-visibility": "advanced",
             "format": "int32",
-            "default": 500
+            "default": 500,
+            "x-ms-summary": "Limit",
+            "description": "Limit the number of invoices returned. Default is 500."
           },
           {
             "name": "offset",
@@ -3737,14 +3700,18 @@
             "required": false,
             "type": "integer",
             "x-ms-visibility": "advanced",
-            "format": "int32"
+            "format": "int32",
+            "x-ms-summary": "Offset",
+            "description": "Offset the invoices returned. Default is 0."
           },
           {
             "name": "page",
             "in": "query",
             "required": false,
             "type": "integer",
-            "x-ms-visibility": "advanced"
+            "x-ms-visibility": "advanced",
+            "x-ms-summary": "Page",
+            "description": "Page number to retrieve. Default is 1."
           },
           {
             "name": "customernumber",
@@ -3752,7 +3719,8 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "important",
-            "description": "Customer number"
+            "x-ms-summary": "Customer number",
+            "description": "Unique identifier for the customer associated with the invoice."
           },
           {
             "name": "lastmodified",
@@ -3760,7 +3728,7 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
+            "x-ms-summary": "Last modified",
             "description": "Retrieves all records since the provided timestamp."
           },
           {
@@ -3769,7 +3737,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -3777,31 +3747,31 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       }
     },
     "/invoices/{DocumentNumber}/preview": {
       "get": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
               "description": "Returns an invoice in PDF format",
               "title": "PDF",
-              "type": "file",
-              "x-ms-visibility": "important"
+              "type": "file"
             },
             "headers": {
               "Content-Type": {
-                "description": "Content-Type",
                 "type": "string",
                 "default": "application/pdf",
-                "x-ms-visibility": "internal"
+                "x-ms-visibility": "internal",
+                "description": "Content-Type",
+                "x-ms-summary": "Content-Type"
               }
             }
           }
@@ -3816,8 +3786,9 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "x-ms-visibility": "important",
-            "description": "Identifies the invoice"
+            "x-ms-summary": "Invoice document number",
+            "description": "Specifies the document number of the invoice to preview",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -3840,9 +3811,7 @@
     },
     "/invoices/{DocumentNumber}/cancel": {
       "put": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -3861,13 +3830,11 @@
                       "description": "@urlTaxReductionList"
                     },
                     "AdministrationFee": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "AdministrationFee"
                     },
                     "AdministrationFeeVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "AdministrationFeeVAT"
                     },
                     "Address1": {
@@ -3879,13 +3846,11 @@
                       "description": "Address2"
                     },
                     "Balance": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Balance"
                     },
                     "BasisTaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "BasisTaxReduction"
                     },
                     "Booked": {
@@ -3910,13 +3875,11 @@
                       "description": "ContractReference"
                     },
                     "ContributionPercent": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionPercent"
                     },
                     "ContributionValue": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionValue"
                     },
                     "Country": {
@@ -3940,13 +3903,11 @@
                       "description": "Currency"
                     },
                     "CurrencyRate": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyRate"
                     },
                     "CurrencyUnit": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyUnit"
                     },
                     "CustomerName": {
@@ -4070,18 +4031,15 @@
                       "description": "ExternalInvoiceReference2"
                     },
                     "Freight": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Freight"
                     },
                     "FreightVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "FreightVAT"
                     },
                     "Gross": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Gross"
                     },
                     "HouseWork": {
@@ -4139,8 +4097,7 @@
                             "description": "Description"
                           },
                           "Discount": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Discount"
                           },
                           "DiscountType": {
@@ -4152,8 +4109,7 @@
                             "description": "HouseWork"
                           },
                           "HouseWorkHoursToReport": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "HouseWorkHoursToReport"
                           },
                           "HouseWorkType": {
@@ -4161,13 +4117,11 @@
                             "description": "HouseWorkType"
                           },
                           "Price": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Price"
                           },
                           "PriceExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "PriceExcludingVAT"
                           },
                           "Project": {
@@ -4184,13 +4138,11 @@
                             "description": "StockPointCode"
                           },
                           "Total": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Total"
                           },
                           "TotalExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "TotalExcludingVAT"
                           },
                           "Unit": {
@@ -4198,8 +4150,7 @@
                             "description": "Unit"
                           },
                           "VAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "VAT"
                           }
                         }
@@ -4233,8 +4184,7 @@
                       "description": "LastRemindDate"
                     },
                     "Net": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Net"
                     },
                     "NotCompleted": {
@@ -4302,13 +4252,11 @@
                       "description": "Remarks"
                     },
                     "Reminders": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Reminders"
                     },
                     "RoundOff": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "RoundOff"
                     },
                     "Sent": {
@@ -4316,8 +4264,7 @@
                       "description": "Sent"
                     },
                     "TaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TaxReduction"
                     },
                     "TermsOfDelivery": {
@@ -4334,18 +4281,15 @@
                       "description": "TimeBasisReference"
                     },
                     "Total": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Total"
                     },
                     "TotalToPay": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalToPay"
                     },
                     "TotalVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalVAT"
                     },
                     "VATIncluded": {
@@ -4410,9 +4354,10 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "description": "Identifies the invoice",
-            "x-ms-summary": "Identifies the invoice",
-            "x-ms-visibility": "important"
+            "x-ms-summary": "Invoice document number",
+            "description": "Specifies the document number of the invoice to be cancelled",
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Invoice",
@@ -4433,13 +4378,11 @@
                       "description": "@urlTaxReductionList"
                     },
                     "AdministrationFee": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "AdministrationFee"
                     },
                     "AdministrationFeeVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "AdministrationFeeVAT"
                     },
                     "Address1": {
@@ -4451,13 +4394,11 @@
                       "description": "Address2"
                     },
                     "Balance": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Balance"
                     },
                     "BasisTaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "BasisTaxReduction"
                     },
                     "Booked": {
@@ -4482,13 +4423,11 @@
                       "description": "ContractReference"
                     },
                     "ContributionPercent": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionPercent"
                     },
                     "ContributionValue": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionValue"
                     },
                     "Country": {
@@ -4512,13 +4451,11 @@
                       "description": "Currency"
                     },
                     "CurrencyRate": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyRate"
                     },
                     "CurrencyUnit": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyUnit"
                     },
                     "CustomerName": {
@@ -4642,18 +4579,15 @@
                       "description": "ExternalInvoiceReference2"
                     },
                     "Freight": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Freight"
                     },
                     "FreightVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "FreightVAT"
                     },
                     "Gross": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Gross"
                     },
                     "HouseWork": {
@@ -4711,8 +4645,7 @@
                             "description": "Description"
                           },
                           "Discount": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Discount"
                           },
                           "DiscountType": {
@@ -4724,8 +4657,7 @@
                             "description": "HouseWork"
                           },
                           "HouseWorkHoursToReport": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "HouseWorkHoursToReport"
                           },
                           "HouseWorkType": {
@@ -4733,13 +4665,11 @@
                             "description": "HouseWorkType"
                           },
                           "Price": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Price"
                           },
                           "PriceExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "PriceExcludingVAT"
                           },
                           "Project": {
@@ -4756,13 +4686,11 @@
                             "description": "StockPointCode"
                           },
                           "Total": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Total"
                           },
                           "TotalExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "TotalExcludingVAT"
                           },
                           "Unit": {
@@ -4770,8 +4698,7 @@
                             "description": "Unit"
                           },
                           "VAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "VAT"
                           }
                         }
@@ -4805,8 +4732,7 @@
                       "description": "LastRemindDate"
                     },
                     "Net": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Net"
                     },
                     "NotCompleted": {
@@ -4874,13 +4800,11 @@
                       "description": "Remarks"
                     },
                     "Reminders": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Reminders"
                     },
                     "RoundOff": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "RoundOff"
                     },
                     "Sent": {
@@ -4888,8 +4812,7 @@
                       "description": "Sent"
                     },
                     "TaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TaxReduction"
                     },
                     "TermsOfDelivery": {
@@ -4906,18 +4829,15 @@
                       "description": "TimeBasisReference"
                     },
                     "Total": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Total"
                     },
                     "TotalToPay": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalToPay"
                     },
                     "TotalVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalVAT"
                     },
                     "VATIncluded": {
@@ -4992,9 +4912,7 @@
     },
     "/companyinformation": {
       "get": {
-        "tags": [
-          "Company Information"
-        ],
+        "tags": ["Company Information"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5073,6 +4991,8 @@
             "required": true,
             "type": "string",
             "default": "application/json",
+            "x-ms-summary": "Content-Type",
+            "description": "Content-Type",
             "x-ms-visibility": "internal"
           },
           {
@@ -5081,16 +5001,16 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       }
     },
     "/invoices/{DocumentNumber}": {
       "get": {
-        "tags": [
-          "Invoices"
-        ],
+        "tags": ["Invoices"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5111,13 +5031,11 @@
                       "description": "@urlTaxReductionList"
                     },
                     "AdministrationFee": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "AdministrationFee"
                     },
                     "AdministrationFeeVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "AdministrationFeeVAT"
                     },
                     "Address1": {
@@ -5129,13 +5047,11 @@
                       "description": "Address2"
                     },
                     "Balance": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Balance"
                     },
                     "BasisTaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "BasisTaxReduction"
                     },
                     "Booked": {
@@ -5160,13 +5076,11 @@
                       "description": "ContractReference"
                     },
                     "ContributionPercent": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionPercent"
                     },
                     "ContributionValue": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "ContributionValue"
                     },
                     "Country": {
@@ -5190,13 +5104,11 @@
                       "description": "Currency"
                     },
                     "CurrencyRate": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyRate"
                     },
                     "CurrencyUnit": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "CurrencyUnit"
                     },
                     "CustomerName": {
@@ -5320,18 +5232,15 @@
                       "description": "ExternalInvoiceReference2"
                     },
                     "Freight": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Freight"
                     },
                     "FreightVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "FreightVAT"
                     },
                     "Gross": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Gross"
                     },
                     "HouseWork": {
@@ -5389,8 +5298,7 @@
                             "description": "Description"
                           },
                           "Discount": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Discount"
                           },
                           "DiscountType": {
@@ -5402,8 +5310,7 @@
                             "description": "HouseWork"
                           },
                           "HouseWorkHoursToReport": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "HouseWorkHoursToReport"
                           },
                           "HouseWorkType": {
@@ -5411,13 +5318,11 @@
                             "description": "HouseWorkType"
                           },
                           "Price": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Price"
                           },
                           "PriceExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "PriceExcludingVAT"
                           },
                           "Project": {
@@ -5434,13 +5339,11 @@
                             "description": "StockPointCode"
                           },
                           "Total": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "Total"
                           },
                           "TotalExcludingVAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "TotalExcludingVAT"
                           },
                           "Unit": {
@@ -5448,8 +5351,7 @@
                             "description": "Unit"
                           },
                           "VAT": {
-                            "type": "integer",
-                            "format": "int32",
+                            "type": "number",
                             "description": "VAT"
                           }
                         }
@@ -5483,8 +5385,7 @@
                       "description": "LastRemindDate"
                     },
                     "Net": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Net"
                     },
                     "NotCompleted": {
@@ -5552,13 +5453,11 @@
                       "description": "Remarks"
                     },
                     "Reminders": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Reminders"
                     },
                     "RoundOff": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "RoundOff"
                     },
                     "Sent": {
@@ -5566,8 +5465,7 @@
                       "description": "Sent"
                     },
                     "TaxReduction": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TaxReduction"
                     },
                     "TermsOfDelivery": {
@@ -5579,23 +5477,19 @@
                       "description": "TermsOfPayment"
                     },
                     "TimeBasisReference": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TimeBasisReference"
                     },
                     "Total": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Total"
                     },
                     "TotalToPay": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalToPay"
                     },
                     "TotalVAT": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "TotalVAT"
                     },
                     "VATIncluded": {
@@ -5661,8 +5555,9 @@
             "in": "path",
             "required": true,
             "type": "string",
-            "x-ms-visibility": "important",
-            "description": "Identifies the invoice"
+            "x-ms-summary": "Invoice document number",
+            "description": "Specifies the document number of the invoice to be retrieved.",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -5670,7 +5565,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -5678,16 +5575,16 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       }
     },
     "/currencies": {
       "get": {
-        "tags": [
-          "Currencies"
-        ],
+        "tags": ["Currencies"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5773,11 +5670,7 @@
                         "type": "boolean",
                         "description": "Is Automatic",
                         "title": "Is Automatic",
-                        "enum": [
-                          "",
-                          "true",
-                          "false"
-                        ],
+                        "enum": [true, false],
                         "x-ms-visibility": "advanced"
                       }
                     }
@@ -5799,7 +5692,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -5807,16 +5702,16 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       }
     },
     "/currencies/{Code}": {
       "get": {
-        "tags": [
-          "Currencies"
-        ],
+        "tags": ["Currencies"],
         "responses": {
           "200": {
             "description": "OK",
@@ -5864,8 +5759,7 @@
                       "format": "float"
                     },
                     "Unit": {
-                      "type": "integer",
-                      "format": "int32",
+                      "type": "number",
                       "description": "Unit",
                       "title": "Unit",
                       "x-ms-visibility": "important"
@@ -5874,11 +5768,7 @@
                       "type": "boolean",
                       "description": "Is Automatic",
                       "title": "Is Automatic",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": [true, false],
                       "x-ms-visibility": "advanced"
                     }
                   },
@@ -5900,7 +5790,9 @@
             "type": "string",
             "default": "SEK",
             "description": "identifies currency",
-            "x-ms-visibility": "important"
+            "x-ms-summary": "Code",
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -5908,7 +5800,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -5916,19 +5810,19 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       }
     },
     "/vouchers": {
       "get": {
-        "tags": [
-          "Vouchers"
-        ],
+        "tags": ["Vouchers"],
         "responses": {
           "200": {
-            "description": "default",
+            "description": "OK",
             "schema": {
               "type": "object",
               "properties": {
@@ -6038,6 +5932,7 @@
             "required": false,
             "type": "integer",
             "description": "Filter on financial year",
+            "x-ms-summary": "Financial year",
             "x-ms-visibility": "advanced",
             "format": "int32"
           },
@@ -6047,7 +5942,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -6055,7 +5952,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           },
           {
             "name": "limit",
@@ -6064,7 +5963,9 @@
             "type": "integer",
             "x-ms-visibility": "advanced",
             "format": "int32",
-            "default": 500
+            "default": 500,
+            "description": "Limit the number of records returned",
+            "x-ms-summary": "Limit"
           },
           {
             "name": "offset",
@@ -6072,14 +5973,18 @@
             "required": false,
             "type": "integer",
             "x-ms-visibility": "advanced",
-            "format": "int32"
+            "format": "int32",
+            "description": "Offset the number of records returned",
+            "x-ms-summary": "Offset"
           },
           {
             "name": "page",
             "in": "query",
             "required": false,
             "type": "integer",
-            "x-ms-visibility": "advanced"
+            "x-ms-visibility": "advanced",
+            "description": "Page",
+            "x-ms-summary": "Page"
           },
           {
             "name": "lastmodified",
@@ -6087,7 +5992,7 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
+            "x-ms-summary": "Last modified",
             "description": "Retrieves all records since the provided timestamp."
           }
         ]
@@ -6096,12 +6001,10 @@
     "/vouchers/A/1": {},
     "/vouchers/{VoucherSeries}/{VoucherNumber}": {
       "get": {
-        "tags": [
-          "Vouchers"
-        ],
+        "tags": ["Vouchers"],
         "responses": {
           "200": {
-            "description": "default",
+            "description": "OK",
             "schema": {
               "type": "object",
               "properties": {
@@ -6204,11 +6107,7 @@
                             "type": "boolean",
                             "description": "Removed",
                             "title": "Removed",
-                            "enum": [
-                              "",
-                              "true",
-                              "false"
-                            ],
+                            "enum": [true, false],
                             "x-ms-visibility": "advanced"
                           },
                           "TransactionInformation": {
@@ -6262,7 +6161,9 @@
             "required": true,
             "type": "string",
             "description": "Identifies the voucher series",
-            "x-ms-visibility": "important"
+            "x-ms-summary": "Voucher Series",
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "VoucherNumber",
@@ -6270,8 +6171,10 @@
             "required": true,
             "type": "integer",
             "description": "Identifies the voucher number",
+            "x-ms-summary": "Voucher Number",
             "format": "int32",
-            "x-ms-visibility": "important"
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "financialyear",
@@ -6279,6 +6182,7 @@
             "required": false,
             "type": "integer",
             "description": "Filter on financial year",
+            "x-ms-summary": "Financial year",
             "x-ms-visibility": "advanced",
             "format": "int32"
           },
@@ -6288,7 +6192,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -6296,19 +6202,19 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       }
     },
     "/absencetransactions": {
       "get": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
-            "description": "default",
+            "description": "OK",
             "schema": {
               "type": "object",
               "properties": {
@@ -6386,11 +6292,7 @@
                         "description": "HolidayEntitling",
                         "title": "Holiday Entitling",
                         "x-ms-visibility": "advanced",
-                        "enum": [
-                          "",
-                          "true",
-                          "false"
-                        ]
+                        "enum": [true, false]
                       },
                       "Hours": {
                         "type": "number",
@@ -6418,8 +6320,8 @@
               }
             }
           },
-          "default": {
-            "description": "default",
+          "400": {
+            "description": "Bad Request",
             "schema": {
               "type": "object",
               "properties": {
@@ -6437,7 +6339,7 @@
                       "type": "integer",
                       "format": "int32",
                       "description": "Error",
-                      "title": "Error",
+                      "title": "Code",
                       "x-ms-visibility": "important"
                     },
                     "Message": {
@@ -6451,6 +6353,15 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "summary": "Lists all absence transactions",
@@ -6464,7 +6375,9 @@
             "in": "query",
             "type": "integer",
             "required": false,
-            "x-ms-visibility": "advanced"
+            "x-ms-visibility": "advanced",
+            "x-ms-summary": "Limit",
+            "description": "Limits the number of records returned. The default value is 500."
           },
           {
             "name": "filter",
@@ -6472,10 +6385,9 @@
             "type": "string",
             "required": false,
             "x-ms-visibility": "advanced",
-            "enum": [
-              "active",
-              "inactive"
-            ]
+            "enum": ["active", "inactive"],
+            "x-ms-summary": "Filter",
+            "description": "Filter the result set. The default value is active."
           },
           {
             "name": "page",
@@ -6483,7 +6395,9 @@
             "type": "integer",
             "required": false,
             "x-ms-visibility": "advanced",
-            "format": "int32"
+            "format": "int32",
+            "x-ms-summary": "Page",
+            "description": "The page number to return. The default value is 1."
           },
           {
             "name": "lastmodified",
@@ -6491,7 +6405,7 @@
             "required": false,
             "type": "string",
             "x-ms-visibility": "advanced",
-            "format": "",
+            "x-ms-summary": "Last Modified",
             "description": "Retrieves all records since the provided timestamp."
           },
           {
@@ -6519,7 +6433,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Content-Type",
+            "description": "Content-Type header"
           },
           {
             "name": "Accept",
@@ -6527,17 +6443,17 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Accept",
+            "description": "Accept header"
           }
         ]
       },
       "post": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "201": {
-            "description": "default",
+            "description": "Created",
             "schema": {
               "type": "object",
               "properties": {
@@ -6566,7 +6482,6 @@
                       "type": "string",
                       "description": "Date",
                       "title": "Date",
-                      "format": "",
                       "x-ms-visibility": "important"
                     },
                     "EmployeeId": {
@@ -6586,11 +6501,7 @@
                       "type": "boolean",
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": [true, false],
                       "x-ms-visibility": "advanced"
                     },
                     "Hours": {
@@ -6618,8 +6529,8 @@
               }
             }
           },
-          "default": {
-            "description": "default",
+          "400": {
+            "description": "Bad Request",
             "schema": {
               "type": "object",
               "properties": {
@@ -6651,6 +6562,15 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "summary": "Create a new absence transaction",
@@ -6664,7 +6584,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Content-Type",
+            "description": "Content-Type header"
           },
           {
             "name": "Accept",
@@ -6672,7 +6594,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "x-ms-summary": "Accept",
+            "description": "Accept header"
           },
           {
             "name": "Absence Transactions",
@@ -6717,17 +6641,20 @@
                       "type": "string",
                       "description": "CostCenter",
                       "title": "Cost Center",
-                      "x-ms-visibility": "advanced"
+                      "x-ms-visibility": "advanced",
+                      "x-ms-summary": "Cost Center"
                     },
                     "Date": {
                       "type": "string",
                       "description": "Date",
                       "title": "Date",
-                      "x-ms-visibility": "important"
+                      "x-ms-visibility": "important",
+                      "x-ms-summary": "Date"
                     },
                     "EmployeeId": {
                       "type": "string",
                       "description": "EmployeeId",
+                      "x-ms-summary": "EmployeeId",
                       "title": "EmployeeId",
                       "x-ms-visibility": "important"
                     },
@@ -6735,46 +6662,40 @@
                       "type": "number",
                       "format": "float",
                       "description": "Extent",
+                      "x-ms-summary": "Extent",
                       "title": "Extent",
                       "x-ms-visibility": "advanced"
                     },
                     "HolidayEntitling": {
                       "type": "boolean",
                       "description": "HolidayEntitling",
+                      "x-ms-summary": "HolidayEntitling",
                       "title": "Holiday Entitling",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "",
-                        true,
-                        false
-                      ]
+                      "enum": [true, false]
                     },
                     "Hours": {
                       "type": "number",
                       "format": "float",
                       "description": "Hours",
+                      "x-ms-summary": "Hours",
                       "title": "Hours",
                       "x-ms-visibility": "advanced"
                     },
                     "Project": {
                       "type": "string",
                       "description": "Project",
+                      "x-ms-summary": "Project",
                       "title": "Project",
                       "x-ms-visibility": "advanced"
                     }
                   },
                   "description": "AbsenceTransaction",
-                  "required": [
-                    "CauseCode",
-                    "Date",
-                    "EmployeeId"
-                  ]
+                  "required": ["CauseCode", "Date", "EmployeeId"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "AbsenceTransaction"
-              ]
+              "required": ["AbsenceTransaction"]
             },
             "x-ms-visibility": "important"
           }
@@ -6783,12 +6704,10 @@
     },
     "/absencetransactions/{id}": {
       "get": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
-            "description": "default",
+            "description": "OK",
             "schema": {
               "type": "object",
               "properties": {
@@ -6836,11 +6755,7 @@
                       "type": "boolean",
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": [true, false],
                       "x-ms-visibility": "advanced"
                     },
                     "Hours": {
@@ -6868,8 +6783,8 @@
               }
             }
           },
-          "default": {
-            "description": "default",
+          "400": {
+            "description": "Bad Request",
             "schema": {
               "type": "object",
               "properties": {
@@ -6887,7 +6802,7 @@
                       "type": "integer",
                       "format": "int32",
                       "description": "Error",
-                      "title": "Error",
+                      "title": "Code",
                       "x-ms-visibility": "important"
                     },
                     "Message": {
@@ -6901,6 +6816,15 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "summary": "Retrieve a specific absence transaction",
@@ -6915,7 +6839,8 @@
             "type": "string",
             "description": "string <uuid> identifies the transaction",
             "x-ms-summary": "Id",
-            "x-ms-visibility": "important"
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -6923,7 +6848,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -6931,21 +6858,23 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       },
       "delete": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
-            "description": "default",
-            "schema": {}
+            "description": "Successfully deleted",
+            "schema": {
+              "type": "object"
+            }
           },
-          "default": {
-            "description": "default",
+          "400": {
+            "description": "Bad Request",
             "schema": {
               "type": "object",
               "properties": {
@@ -6963,7 +6892,7 @@
                       "type": "integer",
                       "format": "int32",
                       "description": "Error",
-                      "title": "Error",
+                      "title": "Code",
                       "x-ms-visibility": "important"
                     },
                     "Message": {
@@ -6977,6 +6906,15 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "summary": "Delete an absence transaction",
@@ -6991,7 +6929,8 @@
             "type": "string",
             "description": "string <uuid> identifies the transaction",
             "x-ms-summary": "id",
-            "x-ms-visibility": "important"
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -6999,7 +6938,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -7007,17 +6948,17 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           }
         ]
       },
       "put": {
-        "tags": [
-          "Absence transactions"
-        ],
+        "tags": ["Absence transactions"],
         "responses": {
           "200": {
-            "description": "default",
+            "description": "OK",
             "schema": {
               "type": "object",
               "properties": {
@@ -7046,7 +6987,6 @@
                       "type": "string",
                       "description": "Date",
                       "title": "Date",
-                      "format": "",
                       "x-ms-visibility": "important"
                     },
                     "EmployeeId": {
@@ -7066,11 +7006,7 @@
                       "type": "boolean",
                       "description": "HolidayEntitling",
                       "title": "Holiday Entitling",
-                      "enum": [
-                        "",
-                        "true",
-                        "false"
-                      ],
+                      "enum": [true, false],
                       "x-ms-visibility": "advanced"
                     },
                     "Hours": {
@@ -7098,8 +7034,8 @@
               }
             }
           },
-          "default": {
-            "description": "default",
+          "400": {
+            "description": "Bad Request",
             "schema": {
               "type": "object",
               "properties": {
@@ -7131,6 +7067,15 @@
                 }
               }
             }
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         },
         "summary": "Update a single absence transaction",
@@ -7145,7 +7090,8 @@
             "type": "string",
             "description": "string <uuid> identifies the transaction",
             "x-ms-summary": "Id",
-            "x-ms-visibility": "important"
+            "x-ms-visibility": "important",
+            "x-ms-url-encoding": "single"
           },
           {
             "name": "Content-Type",
@@ -7153,7 +7099,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Content-Type",
+            "x-ms-summary": "Content-Type"
           },
           {
             "name": "Accept",
@@ -7161,7 +7109,9 @@
             "required": true,
             "type": "string",
             "default": "application/json",
-            "x-ms-visibility": "internal"
+            "x-ms-visibility": "internal",
+            "description": "Accept",
+            "x-ms-summary": "Accept"
           },
           {
             "name": "Absence Transactions",
@@ -7205,18 +7155,21 @@
                     "CostCenter": {
                       "type": "string",
                       "description": "CostCenter",
+                      "x-ms-summary": "CostCenter",
                       "title": "Cost Center",
                       "x-ms-visibility": "advanced"
                     },
                     "Date": {
                       "type": "string",
                       "description": "Date",
+                      "x-ms-summary": "Date",
                       "title": "Date",
                       "x-ms-visibility": "important"
                     },
                     "EmployeeId": {
                       "type": "string",
                       "description": "EmployeeId",
+                      "x-ms-summary": "EmployeeId",
                       "title": "EmployeeId",
                       "x-ms-visibility": "important"
                     },
@@ -7224,46 +7177,41 @@
                       "type": "number",
                       "format": "float",
                       "description": "Extent",
+                      "x-ms-summary": "Extent",
                       "title": "Extent",
                       "x-ms-visibility": "advanced"
                     },
                     "HolidayEntitling": {
                       "type": "boolean",
                       "description": "HolidayEntitling",
+                      "x-ms-summary": "HolidayEntitling",
                       "title": "Holiday Entitling",
                       "x-ms-visibility": "advanced",
-                      "enum": [
-                        "",
-                        true,
-                        false
-                      ]
+                      "enum": [true, false]
                     },
                     "Hours": {
                       "type": "number",
                       "format": "float",
                       "description": "Hours",
+                      "x-ms-summary": "Hours",
                       "title": "Hours",
                       "x-ms-visibility": "advanced"
                     },
                     "Project": {
                       "type": "string",
                       "description": "Project",
+                      "x-ms-summary": "Project",
                       "title": "Project",
                       "x-ms-visibility": "advanced"
                     }
                   },
                   "description": "AbsenceTransaction",
-                  "required": [
-                    "CauseCode",
-                    "Date",
-                    "EmployeeId"
-                  ]
+                  "x-ms-summary": "AbsenceTransaction",
+                  "required": ["CauseCode", "Date", "EmployeeId"]
                 }
               },
               "x-ms-visibility": "important",
-              "required": [
-                "AbsenceTransaction"
-              ]
+              "required": ["AbsenceTransaction"]
             },
             "x-ms-visibility": "important"
           }
